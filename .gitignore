@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+venv/
+ENV/
+*.egg-info/
+*.egg
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# General
+*.log
+*.sqlite3
+
+# FastMCP
+fastmcp_server.log
+
+# Prompts
+prompts/*/style.md
+
+# Ignore test, coverage, and build artifacts
+.coverage
+htmlcov/
+dist/
+build/
+*.bak
+
+# Misc
+*.swp
+*.swo
+
+# If using pipenv or poetry
+Pipfile.lock
+poetry.lock
+.venv
