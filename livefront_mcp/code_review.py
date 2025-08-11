@@ -18,10 +18,26 @@ class CodeReviewResponse(BaseModel):
 
 
 @mcp.prompt(
-    name="generate_review_request",
+    name="code_review_csharp",
+    description="Call this to fetch the C# code review prompt.",
+)
+def code_review_csharp() -> CodeReviewResponse:
+    """
+    Convenience wrapper to fetch the C# code review prompt.
+    """
+    prompt = load_prompt(
+        f"prompts/code_review/csharp.md",
+        merge_with="prompts/code_review/shared.md",
+    )
+
+    return PromptMessage(role="user", content=TextContent(type="text", text=prompt))
+
+
+@mcp.prompt(
+    name="code_review",
     description="Call this to fetch a language specific code review prompt. Always provide the language if known.",
 )
-def generate_review_request(params: CodeReviewParams) -> CodeReviewResponse:
+def code_review(params: CodeReviewParams) -> CodeReviewResponse:
     """
     Review Code for a given language.
     """
