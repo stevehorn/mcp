@@ -30,20 +30,12 @@ source .venv/bin/activate
 
 ### Install Dependencies
 
-If you have a `requirements.txt` or `pyproject.toml`, install dependencies with:
-
 ```sh
 uv pip install -r requirements.txt
-# or
-uv pip install .
 ```
 
 ### Run the Server
 
 ```sh
-python fastmcp_server.py
+python main.py
 ```
-
----
-
-For more details on `uv`, see the [uv documentation](https://github.com/astral-sh/uv).
