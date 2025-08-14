@@ -1,4 +1,4 @@
-# Contributing Guidelines
+# Contribution Guidelines
 
 Welcome to the Livefront MCP repository! Our goal is to standardize and refine prompts that can be shared across Livefront.
 
