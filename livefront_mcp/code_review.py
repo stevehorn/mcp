@@ -18,6 +18,25 @@ class CodeReviewResponse(BaseModel):
 
 
 @mcp.prompt(
+    name="diff_code_review_csharp",
+    description="Call this to fetch the C# code review prompt for a diff between main and the current branch.",
+)
+def code_review_csharp() -> CodeReviewResponse:
+    """
+    Fetches the C# code review prompt specifically for reviewing diffs between the main branch and the current branch.
+    """
+    prompt = load_prompt(
+        "prompts/code_review/csharp/diff_review.md",
+        merge_with=[
+            "prompts/code_review/csharp/csharp.md",
+            "prompts/code_review/shared/shared.md",
+        ],
+    )
+
+    return PromptMessage(role="user", content=TextContent(type="text", text=prompt))
+
+
+@mcp.prompt(
     name="code_review_csharp",
     description="Call this to fetch the C# code review prompt.",
 )
@@ -26,8 +45,8 @@ def code_review_csharp() -> CodeReviewResponse:
     Convenience wrapper to fetch the C# code review prompt.
     """
     prompt = load_prompt(
-        f"prompts/code_review/csharp.md",
-        merge_with="prompts/code_review/shared.md",
+        f"prompts/code_review/csharp/csharp.md",
+        merge_with=["prompts/code_review/shared/shared.md"],
     )
 
     return PromptMessage(role="user", content=TextContent(type="text", text=prompt))
@@ -42,8 +61,8 @@ def code_review(params: CodeReviewParams) -> CodeReviewResponse:
     Review Code for a given language.
     """
     prompt = load_prompt(
-        f"prompts/code_review/{params.language}.md",
-        merge_with="prompts/code_review/shared.md",
+        f"prompts/code_review/{params.language}/{params.language}.md",
+        merge_with=["prompts/code_review/shared/shared.md"],
     )
 
     return PromptMessage(role="user", content=TextContent(type="text", text=prompt))

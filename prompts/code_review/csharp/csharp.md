@@ -39,7 +39,6 @@
 ## Performance & Memory
 
 - Use `Span<T>`/`Memory<T>` for performance-critical paths when beneficial.
-- Minimize heap allocations where possible.
 - Use `using`/`await using` for disposable resources.
 
 ## Security
